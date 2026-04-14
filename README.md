@@ -95,6 +95,20 @@ python -m pip install -r requirements.txt
 python scripts\bootstrap.py
 ```
 
+### 3b. Optional: Fetch live jobs from Remotive
+
+This project also supports live ingestion from Remotive's public jobs API, filtered toward `data`, `analytics`, and `AI` roles.
+
+```powershell
+python scripts\fetch_live_jobs.py
+```
+
+You can also provide targeted search queries:
+
+```powershell
+python scripts\fetch_live_jobs.py --query "data engineer" --query "ml engineer" --limit-per-query 15
+```
+
 ### 4. Run the API
 
 ```powershell
@@ -116,6 +130,7 @@ streamlit run app/dashboard.py
 - Which role categories have the highest average salary bands?
 - Which skills are associated with higher-paying roles?
 - Which jobs match a target skill, salary floor, and location preference?
+- What do current live remote data and AI listings emphasize most often?
 
 ## API Endpoints
 
@@ -159,3 +174,8 @@ The test suite covers:
 - load curated data into `BigQuery`, `Snowflake`, or `Fabric`
 - add dbt models on top of the warehouse layer
 - schedule ingestion and freshness checks with Airflow
+
+## Data Sources
+
+- local seed dataset in `data/sample_jobs.csv`
+- optional live ingestion from Remotive public jobs API via `scripts/fetch_live_jobs.py`

@@ -1,8 +1,15 @@
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+
+BASE_DIR = Path(__file__).resolve().parents[1]
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
 
 from app.services.analytics import (
     get_high_paying_skills,
@@ -46,14 +53,14 @@ with tab_overview:
         st.subheader("Top In-Demand Skills")
         st.plotly_chart(
             px.bar(skills_df, x="demand", y="skill", orientation="h", title="Skill demand"),
-            use_container_width=True,
+            width="stretch",
         )
 
     with right:
         st.subheader("Top Hiring Locations")
         st.plotly_chart(
             px.bar(locations_df, x="openings", y="location", orientation="h", title="Open roles by city"),
-            use_container_width=True,
+            width="stretch",
         )
 
 with tab_market:
@@ -63,14 +70,14 @@ with tab_market:
         st.subheader("Role Distribution")
         st.plotly_chart(
             px.pie(roles_df, names="category", values="openings", title="Role categories"),
-            use_container_width=True,
+            width="stretch",
         )
 
     with right:
         st.subheader("Highest Paying Skills")
         st.plotly_chart(
             px.bar(salary_df, x="avg_salary", y="skill", orientation="h", title="Average salary by skill"),
-            use_container_width=True,
+            width="stretch",
         )
 
     st.subheader("Salary by Role Category")
@@ -82,7 +89,7 @@ with tab_market:
             color="openings",
             title="Average salary by category",
         ),
-        use_container_width=True,
+        width="stretch",
     )
 
 with tab_explorer:
@@ -116,4 +123,4 @@ with tab_explorer:
 
     filtered_frame = pd.DataFrame(filtered_jobs)
     st.caption(f"{len(filtered_frame)} listings matched your filters.")
-    st.dataframe(filtered_frame, use_container_width=True, hide_index=True)
+    st.dataframe(filtered_frame, width="stretch", hide_index=True)
