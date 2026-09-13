@@ -160,20 +160,6 @@ The test suite covers:
 - filtering behavior
 - API endpoint health and response shapes
 
-## Why This Makes a Strong Portfolio Project
-
-- It demonstrates end-to-end ownership from raw data to product surface.
-- It is business-oriented, not just model-oriented.
-- It shows data engineering, analytics engineering, and application thinking together.
-- It is easy to extend with `dbt`, `Airflow`, `LLM extraction`, or a cloud warehouse later.
-
-## Suggested Next Upgrades
-
-- replace the sample CSV with live ingestion from job APIs or scraping jobs boards
-- add LLM-based skill extraction and job-summary generation
-- load curated data into `BigQuery`, `Snowflake`, or `Fabric`
-- add dbt models on top of the warehouse layer
-- schedule ingestion and freshness checks with Airflow
 
 ## Data Sources
 
